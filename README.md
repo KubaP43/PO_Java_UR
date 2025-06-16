@@ -1,1 +1,1 @@
-# PO_Java_UR
+# Projekt znajduje się na gałęzi master
