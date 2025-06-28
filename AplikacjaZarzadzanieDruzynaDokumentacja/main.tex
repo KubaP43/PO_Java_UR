@@ -209,7 +209,7 @@ W celu rozwiązania tego problemu, projekt zakłada stworzenie kompletnego syste
 
 Aplikacja wymaga aktywnego połączenia z bazą danych MySQL, co oznacza, że użytkownik musi posiadać zainstalowany serwer bazy danych oraz odpowiednio skonfigurowany dostęp (login i hasło). Rezultatem prac projektowych jest w pełni funkcjonalna aplikacja komputerowa, którą można rozszerzać o nowe funkcjonalności w przyszłości (np. statystyki zawodników, harmonogramy meczów).
 
-\section{Wymagania funkcjonalne}
+\section{Wymagania funkcjonalne oraz niefunkcjonalne}
 
 \begin{itemize}
   \item Możliwość rejestracji nowego użytkownika z podaniem wszystkich niezbędnych danych.
@@ -225,7 +225,7 @@ Aplikacja wymaga aktywnego połączenia z bazą danych MySQL, co oznacza, że u�
   \item Oddzielenie warstwy GUI od logiki poprzez zastosowanie kontrolerów.
 \end{itemize}
 
-\section{Wymagania niefunkcjonalne}
+oraz wymagania niefunkcjonalne:
 
 \begin{itemize}
   \item Aplikacja powinna być dostępna na systemie operacyjnym Windows z zainstalowanym środowiskiem Java.
@@ -243,7 +243,7 @@ Aplikacja wymaga aktywnego połączenia z bazą danych MySQL, co oznacza, że u�
 
 Struktura projektu została zaprojektowana w sposób modularny z wyraźnym podziałem na warstwę logiki (kontrolery), interfejs użytkownika (GUI) oraz logikę biznesową (modele danych). Aplikacja została zrealizowana w języku Java z wykorzystaniem środowiska IntelliJ IDEA oraz bibliotek Swing (do tworzenia interfejsu graficznego) i JDBC (do obsługi połączenia z bazą danych MySQL).
 
-\section{Struktura klas}
+Struktura klas
 
 Projekt składa się z następujących typów plików:
 
@@ -254,7 +254,7 @@ Projekt składa się z następujących typów plików:
   \item \textbf{Pozostałe klasy wspomagające} – \texttt{Main} (punkt wejścia aplikacji), \texttt{Frame} (bazowa klasa okien aplikacji), \texttt{Komunikat} (wyświetlanie informacji użytkownikowi), \texttt{BazaDanych} (zarządzanie połączeniem z MySQL).
 \end{itemize}
 
-\section{Hierarchia klas i logika aplikacji}
+Hierarchia klas i logika aplikacji
 
 \begin{itemize}
   \item Wszystkie klasy graficzne dziedziczą po klasie \texttt{Frame}, która ustawia wspólne parametry okien, takie jak centrowanie na ekranie.
@@ -267,7 +267,7 @@ Projekt składa się z następujących typów plików:
 
 \end{itemize}
 
-\subsection{Opis metod kontrolerów}
+\section{Opis metod kontrolerów}
 
 \textbf{AplikacjaController}
 \begin{itemize}
@@ -312,7 +312,7 @@ Projekt składa się z następujących typów plików:
 \end{itemize}
 
 
-\subsection{Wykorzystane technologie}
+Wykorzystane technologie
 
 \begin{itemize}
   \item \textbf{Java 24} – język programowania.
@@ -322,18 +322,52 @@ Projekt składa się z następujących typów plików:
   \item \textbf{IntelliJ IDEA 2025.1} – środowisko programistyczne wykorzystywane do budowy projektu.
 \end{itemize}
 
-\subsection{Zarządzanie danymi i baza danych}
+Zarządzanie danymi i baza danych
 
-Dane przechowywane są w lokalnej bazie danych MySQL. Struktura bazy obejmuje  trzy tabele:
-\begin{itemize}
-  \item \texttt{uzytkownicy} – przechowuje dane logowania (login, hasło, id).
-  \item \texttt{druzyny} – przypisane do użytkownika (id, nazwa, wlascicielid).
-  \item \texttt{pilkarze} – przypisani do drużyn (id, imię, nazwisko, druzynaid).
-\end{itemize}
+Baza danych znajduje się w pliku readme md w repozytorium projektu zostało umieszczonym na platformie \textbf{GitHub} pod adresem:
+
+
+\begin{center}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black
+}
+    \url{https://github.com/KubaP43/PO_Java_UR}
+\end{center}
+
+Poniżej zamieszczony zrzut ekranu przedstawia relację oraz strukturę bazy danych, powiązania oraz klucze główne.
+
+\vspace{1em}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{erd.png}
+\captionof{figure}{Diagram ERD przedstawiający relacje w bazie danych}
+\label{fig:erd}
+\end{figure}
+
+Dane przechowywane są w lokalnej bazie danych MySQL. Struktura bazy obejmuje trzy tabele:\\
+
+\vspace{1em}
+
+\textbf{Tabela \texttt{druzyny}} \\
+Tabela przechowuje informacje o drużynach, w tym ich nazwy oraz identyfikatora właściciela (odwołanie do tabeli \texttt{klienci}).
+
+\vspace{1em}
+
+\textbf{Tabela \texttt{klienci}} \\
+Tabela zawiera dane klientów systemu, takie jak login oraz hasło.
+
+\vspace{1em}
+
+\textbf{Tabela \texttt{pilkarze}} \\
+Tabela zawiera dane piłkarzy, w tym imię, nazwisko oraz identyfikator drużyny, do której należą.
+
 
 Połączenie realizowane jest przez klasę \texttt{BazaDanych} przy użyciu sterownika JDBC.
 
-\subsection{Minimalne wymagania sprzętowe}
+Minimalne wymagania sprzętowe
 
 \begin{itemize}
   \item System operacyjny: Windows 10 lub nowszy.
@@ -343,7 +377,7 @@ Połączenie realizowane jest przez klasę \texttt{BazaDanych} przy użyciu ster
   \item Zainstalowany i uruchomiony serwer MySQL.
 \end{itemize}
 
-\subsection{Dodatkowe narzędzia}
+Dodatkowe narzędzia
 
 \begin{itemize}
   \item IntelliJ IDEA (lub inny edytor wspierający .form Swing Designer).
@@ -357,7 +391,7 @@ Poniżej przedstawiono harmonogram realizacji projektu w postaci diagramu Gantta
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{diagram.png}
+    \includegraphics[width=0.75\linewidth]{diagram.png}
     \caption{Diagram Gantta przedstawiający harmonogram realizacji projektu}
 \end{figure}
 
@@ -395,7 +429,7 @@ Poniżej przedstawiono opis poszczególnych paneli aplikacji wraz z odpowiednimi
 
     \vspace{0.3em}
     \begin{center}
-      \includegraphics[width=0.7\linewidth]{rejestracja.png}
+      \includegraphics[width=0.75\linewidth]{rejestracja.png}
       \captionof{figure}{Panel rejestracji użytkownika (RejestracjaGUI).}
       \label{fig:rejestracja}
     \end{center}
@@ -407,7 +441,7 @@ Poniżej przedstawiono opis poszczególnych paneli aplikacji wraz z odpowiednimi
 
     \vspace{0.3em}
     \begin{center}
-      \includegraphics[width=0.7\linewidth]{logowanie.png}
+      \includegraphics[width=0.75\linewidth]{logowanie.png}
       \captionof{figure}{Panel logowania użytkownika (LoginGUI).}
       \label{fig:logowanie}
     \end{center}
@@ -419,7 +453,7 @@ Poniżej przedstawiono opis poszczególnych paneli aplikacji wraz z odpowiednimi
 
     \vspace{0.3em}
     \begin{center}
-      \includegraphics[width=0.7\linewidth]{panelaplikacji.png}
+      \includegraphics[width=0.75\linewidth]{panelaplikacji.png}
       \captionof{figure}{Panel główny aplikacji (AplikacjaGUI).}
       \label{fig:aplikacja}
     \end{center}
@@ -431,7 +465,7 @@ Poniżej przedstawiono opis poszczególnych paneli aplikacji wraz z odpowiednimi
 
     \vspace{0.3em}
     \begin{center}
-      \includegraphics[width=0.7\linewidth]{dodajdruzyne.png}
+      \includegraphics[width=0.75\linewidth]{dodajdruzyne.png}
       \captionof{figure}{Dodawanie nowej drużyny (DodawanieDruzynyGUI).}
       \label{fig:dodajdruzyne}
     \end{center}
@@ -443,7 +477,7 @@ Poniżej przedstawiono opis poszczególnych paneli aplikacji wraz z odpowiednimi
 
     \vspace{0.3em}
     \begin{center}
-      \includegraphics[width=0.7\linewidth]{dodaj pilkaza.png}
+      \includegraphics[width=0.75\linewidth]{dodaj pilkaza.png}
       \captionof{figure}{Dodawanie piłkarza do drużyny (DodajPilkarzaGUI).}
       \label{fig:dodajpilkarza}
     \end{center}
@@ -455,7 +489,7 @@ Poniżej przedstawiono opis poszczególnych paneli aplikacji wraz z odpowiednimi
 
     \vspace{0.3em}
     \begin{center}
-      \includegraphics[width=0.7\linewidth]{edytujdruzyne.png}
+      \includegraphics[width=0.75\linewidth]{edytujdruzyne.png}
       \captionof{figure}{Edycja danych drużyny (EdytujDruzyneGUI).}
       \label{fig:edytujdruzyne}
     \end{center}
